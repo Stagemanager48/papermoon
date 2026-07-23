@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初めての方へ | スナック ペーパームーン</title>
+
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- 自作のスタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 追従ヘッダーバー -->
+  <nav class="site-header-bar">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      
+      <!-- メニュー用チェックボックス -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
+      <label for="menu-toggle" class="menu-overlay"></label>
+
+      <!-- ドロワーメニュー -->
+      <div class="drawer-menu">
+        <div class="drawer-header">
+          <span class="drawer-title">MENU</span>
+          <label for="menu-toggle" class="close-btn">✕</label>
+        </div>
+        
+        <ul class="drawer-nav">
+          <li><a href="index.html">🏠 ホーム</a></li>
+          <li><a href="concept.html">🔰 初めての方へ</a></li>
+          <li><a href="faq.html">❓ よくある質問・お支払い</a></li>
+          <li><a href="access.html">🗺️ アクセス・店舗情報</a></li>
+          <li><a href="news.html">📢 お知らせ</a></li>
+        </ul>
+
+        <div class="drawer-footer">
+          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+            📞 今からいける？（電話）
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <main class="container" style="padding-top: 90px; padding-bottom: 3rem;">
+    
+    <header style="text-align: center; margin-bottom: 3rem;">
+      <h1 style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); font-size: 2rem;">初めての方へ</h1>
+      <p style="color: #ddd;">〜 一人でも、一晩だけでも。ほっと一息つける「大人の秘密基地」 〜</p>
+    </header>
+
+    <!-- コンセプト（お店の魅力） -->
+    <section style="margin-bottom: 3rem;">
+      <article style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.8rem; border-radius: 8px;">
+        <h2 style="font-size: 1.4rem; color: #ffcc00; margin-bottom: 1rem;">ペーパームーンってどんなお店？</h2>
+        <p>「スナックに行ってみたいけれど、入りづらい…」<br>そんな方にこそ来ていただきたいお店です。</p>
+        <p>扉を開ければ、昭和の温もりを感じるレトロで落ち着いた雰囲気。気さくなママと常連さんが笑顔でお迎えします。お一人様はもちろん、出張中の方やスナック初心者の方も大歓迎です！</p>
+      </article>
+    </section>
+
+    <!-- 3つの安心ポイント -->
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.4rem; text-align: center; margin-bottom: 1.5rem;">ペーパームーン 3つの安心</h2>
+
+      <div style="display: grid; gap: 1.2rem;">
+        <!-- ポイント 1 -->
+        <div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ffcc00; padding: 1.2rem; border-radius: 0 8px 8px 0;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">1. 明朗会計で安心</h3>
+          <p style="margin: 0; color: #ccc; font-size: 0.95rem;">1時間 3,000円（税込）で飲み放題＆歌い放題。後から不明な料金が加算されることは一切ありません！</p>
+        </div>
+
+        <!-- ポイント 2 -->
+        <div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ffcc00; padding: 1.2rem; border-radius: 0 8px 8px 0;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">2. お一人様・女性のお客様多数</h3>
+          <p style="margin: 0; color: #ccc; font-size: 0.95rem;">カウンター席メインなので、1人でも気軽に立ち寄れます。女性同士やお仕事帰りのサク飲みにもぴったりです。</p>
+        </div>
+
+        <!-- ポイント 3 -->
+        <div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ffcc00; padding: 1.2rem; border-radius: 0 8px 8px 0;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">3. カラオケで盛り上がれる</h3>
+          <p style="margin: 0; color: #ccc; font-size: 0.95rem;">最新曲から懐かしの昭和歌謡まで歌い放題！他のお客様と自然と打ち解けられるあたたかい空間です。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 入店からお会計までの流れ -->
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.4rem; text-align: center; margin-bottom: 1.5rem;">過ごし方のながれ</h2>
+
+      <ol style="padding-left: 1.2rem; color: #ddd; line-height: 1.8;">
+        <li style="margin-bottom: 1rem;">
+          <strong>ご来店・お席へご案内</strong><br>
+          <small style="color: #aaa;">ドアを叩いてお気軽にどうぞ！「初めてです」とお伝えいただければママが優しくご案内します。</small>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>お飲み物のご注文 ＆ カンパイ</strong><br>
+          <small style="color: #aaa;">お好きなお飲み物をお選びください。まずは一杯、一緒に楽しみましょう！</small>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>カラオケやお喋りを楽しむ</strong><br>
+          <small style="color: #aaa;">ママやカウンターのお客さんと会話を楽しむもよし、得意な曲を歌うもよし。自由に過ごしてください。</small>
+        </li>
+        <li>
+          <strong>明朗なお会計</strong><br>
+          <small style="color: #aaa;">お時間になりましたら、明確なセット料金にてお会計いたします。</small>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 行動喚起（電話＆ナビ誘導） -->
+    <section style="text-align: center; background: rgba(255, 204, 0, 0.05); border: 1px solid rgba(255, 204, 0, 0.2); padding: 2rem 1rem; border-radius: 8px;">
+      <h3 style="font-size: 1.2rem; color: #ffcc00; margin-bottom: 0.8rem;">今夜のお席、空いてる？</h3>
+      <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">混雑状況の確認やご予約は、お電話一本でスムーズです！</p>
+
+      <a href="tel:0312345678" role="button" style="width: 100%; margin-bottom: 1rem;">
+        📞 今からいける？（電話をかける）
+      </a>
+      
+      <div style="display: flex; gap: 1rem; justify-content: center; font-size: 0.9rem;">
+        <a href="access.html" class="secondary" style="text-decoration: none;">🗺️ 場所を確認する</a>
+        <a href="faq.html" class="secondary" style="text-decoration: none;">❓ よくある質問</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container" style="text-align: center; margin-top: 2rem;">
+    <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
+  </footer>
+
+</body>
+</html>

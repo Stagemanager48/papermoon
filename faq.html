@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>よくある質問 | スナック ペーパームーン</title>
+
+  <!-- Pico CSS の読み込み -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- 自作のスタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 一直線のヘッダーバー -->
+  <nav class="site-header-bar">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      
+      <!-- 右側の三点リーダー（仕掛け用チェックボックス） -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
+
+      <!-- 背景の黒いオーバーレイ -->
+      <label for="menu-toggle" class="menu-overlay"></label>
+
+      <!-- 画面右から出てくるドロワーメニュー -->
+      <div class="drawer-menu">
+        <div class="drawer-header">
+          <span class="drawer-title">MENU</span>
+          <label for="menu-toggle" class="close-btn">✕</label>
+        </div>
+        
+        <ul class="drawer-nav">
+          <li><a href="index.html">🏠 ホーム</a></li>
+          <li><a href="concept.html">🔰 初めての方へ</a></li>
+          <li><a href="faq.html">❓ よくある質問・お支払い</a></li>
+          <li><a href="access.html">🗺️ アクセス・店舗情報</a></li>
+          <li><a href="news.html">📢 お知らせ</a></li>
+        </ul>
+
+        <div class="drawer-footer">
+          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+            📞 今からいける？（電話）
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FAQ メインコンテンツ -->
+  <main class="container" style="padding-top: 90px; padding-bottom: 3rem;">
+    <h1 style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);">よくある質問・お支払い</h1>
+    <p>初めてのお客様にも安心してご来店いただけるよう、よくいただくご質問をまとめました。</p>
+
+    <hr style="margin-bottom: 2rem; opacity: 0.2;">
+
+    <section>
+      <details open>
+        <summary><strong>Q. 1人で行っても楽しめますか？</strong></summary>
+        <p style="margin-top: 0.8rem; color: #ddd;">
+          もちろんです！お一人で来られるお客様もたくさんいらっしゃいます。<br>
+          カウンター席でママやお隣のお客様と楽しくおしゃべりできますので、お気軽にお立ち寄りください。
+        </p>
+      </details>
+
+      <details>
+        <summary><strong>Q. 女性だけで行っても大丈夫ですか？</strong></summary>
+        <p style="margin-top: 0.8rem; color: #ddd;">
+          大歓迎です！アットホームで安全な雰囲気ですので、女性のお一人様や女子会でのご利用も安心してお楽しみいただけます。
+        </p>
+      </details>
+
+      <details>
+        <summary><strong>Q. どのようなお支払い方法がありますか？</strong></summary>
+        <p style="margin-top: 0.8rem; color: #ddd;">
+          現金のほか、各種クレジットカード（VISA / Master / JCB / AMEX）がご利用いただけます。
+        </p>
+      </details>
+
+      <details>
+        <summary><strong>Q. カラオケは別料金ですか？</strong></summary>
+        <p style="margin-top: 0.8rem; color: #ddd;">
+          いいえ、1時間 3,000円（税込）の基本料金に<strong>歌い放題 ＆ 飲み放題</strong>が含まれております！追加で歌唱料がかかることはありません。
+        </p>
+      </details>
+
+      <details>
+        <summary><strong>Q. 団体での貸切や予約は可能ですか？</strong></summary>
+        <p style="margin-top: 0.8rem; color: #ddd;">
+          はい、事前にご連絡いただければ貸切やグループでのご予約も承っております。<br>
+          人数やご予算など、お電話にてお気軽にご相談ください。
+        </p>
+      </details>
+    </section>
+
+    <!-- 電話・ホームへ戻るボタン -->
+    <div style="margin-top: 3rem; text-align: center;">
+      <a href="tel:0312345678" role="button" style="width: 100%; margin-bottom: 1rem;">
+        📞 空き状況を電話で確認する
+      </a>
+      <a href="index.html" class="secondary" style="text-decoration: none;">← ホームに戻る</a>
+    </div>
+  </main>
+
+  <footer class="container" style="text-align: center; margin-top: 2rem;">
+    <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
+  </footer>
+
+</body>
+</html>

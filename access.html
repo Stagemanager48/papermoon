@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アクセス・店舗情報 | スナック ペーパームーン</title>
+
+  <!-- Pico CSS の読み込み -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- 自作のスタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダーバー（共通デザイン） -->
+  <nav class="site-header-bar">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      
+      <!-- メニュー用チェックボックス -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
+
+      <!-- 背景オーバーレイ -->
+      <label for="menu-toggle" class="menu-overlay"></label>
+
+      <!-- ドロワーメニュー -->
+      <div class="drawer-menu">
+        <div class="drawer-header">
+          <span class="drawer-title">MENU</span>
+          <label for="menu-toggle" class="close-btn">✕</label>
+        </div>
+        
+        <ul class="drawer-nav">
+          <li><a href="index.html">🏠 ホーム</a></li>
+          <li><a href="concept.html">🔰 初めての方へ</a></li>
+          <li><a href="faq.html">❓ よくある質問・お支払い</a></li>
+          <li><a href="access.html">🗺️ アクセス・店舗情報</a></li>
+          <li><a href="news.html">📢 お知らせ</a></li>
+        </ul>
+
+        <div class="drawer-footer">
+          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+            📞 今からいける？（電話）
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- アクセス メインコンテンツ -->
+  <main class="container" style="padding-top: 90px; padding-bottom: 3rem;">
+    <h1 style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);">アクセス・店舗情報</h1>
+    <p>JR吾妻橋駅 より徒歩1分。ネオンの看板を目印にお越しください。</p>
+
+    <hr style="margin-bottom: 2rem; opacity: 0.2;">
+
+    <!-- 店舗基本情報テーブル -->
+    <section style="margin-bottom: 3rem;">
+      <h2>基本情報</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row" style="width: 30%;">店名</th>
+            <td>スナック ペーパームーン</td>
+          </tr>
+          <tr>
+            <th scope="row">住所</th>
+            <td>
+              〒130-0001<br>
+               東京都墨田区吾妻橋 ２丁目３−９
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">電話番号</th>
+            <td><a href="tel:09040591341" style="color: #ffcc00;">090-4059-1341</a></td>
+          </tr>
+          <tr>
+            <th scope="row">営業時間</th>
+            <td>19:00 〜 24:00</td>
+          </tr>
+          <tr>
+            <th scope="row">定休日</th>
+            <td>日・月曜日</td>
+          </tr>
+          <tr>
+            <th scope="row">席数</th>
+            <td>カウンター 8席 / テーブル 12席（合計20席）</td>
+          </tr>
+          <tr>
+            <th scope="row">お支払い</th>
+            <td>現金、各種クレジットカード</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Google Map（地図埋め込み枠） -->
+    <section style="margin-bottom: 3rem;">
+      <h2>マップ</h2>
+      <div style="position: relative; width: 100%; height: 350px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);">
+        <!-- Google Mapから埋め込みコードを取得したらsrcを差し替えてください -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7039610180213!2d139.801502075789!3d35.708901972578275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed02364624f%3A0x18dad472c8f4f720!2z44Oa44O844OR44O844Og44O844Oz!5e0!3m2!1sja!2sjp!4v1784801883374!5m2!1sja!2sjp"
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+      <p style="text-align: right; margin-top: 0.5rem; font-size: 0.9rem;">
+        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" style="color: #ffcc00;">Googleマップアプリで開く ↗</a>
+      </p>
+    </section>
+
+    <!-- 駅からの道順（道案内に親切！） -->
+    <section style="margin-bottom: 3rem;">
+      <h2>駅からのアクセス</h2>
+      <ol>
+        <li>JR〇〇駅の<strong>「東口改札」</strong>を出て右に進みます。</li>
+        <li>〇〇商店街のアーケードを直進し、1つ目の信号（コンビニの角）を左に曲がります。</li>
+        <li>50mほど進むと右手に見える、黄色いネオン看板の「〇〇ビル」2階です。</li>
+      </ol>
+    </section>
+
+    <!-- 電話・ホーム戻るボタン -->
+    <div style="margin-top: 3rem; text-align: center;">
+      <a href="tel:0312345678" role="button" style="width: 100%; margin-bottom: 1rem;">
+        📞 今からいける？（電話する）
+      </a>
+      <a href="index.html" class="secondary" style="text-decoration: none;">← ホームに戻る</a>
+    </div>
+  </main>
+
+  <footer class="container" style="text-align: center; margin-top: 2rem;">
+    <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
+  </footer>
+
+</body>
+</html>

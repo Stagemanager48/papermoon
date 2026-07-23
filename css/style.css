@@ -1,4 +1,171 @@
-/* お知らせリストのデザイン */
+/* --- 一直線のヘッダーバー --- */
+nav.site-header-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.header-inner {
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5rem;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box;
+}
+
+.site-header-bar .brand-logo {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+
+/* --- 三点リーダー ＆ チェックボックスの仕掛け --- */
+.menu-toggle {
+  display: none; /* チェックボックス本体は隠す */
+}
+
+.menu-btn {
+  color: #ffcc00;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  user-select: none;
+}
+
+/* --- 開いた時の背景黒透過オーバーレイ --- */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* --- 画面右から出る大きなドロワーメニュー --- */
+.drawer-menu {
+  position: fixed;
+  top: 0;
+  right: -80%; /* 最初は画面の右外に隠しておく */
+  width: 75%;  /* 画面幅の75%を覆うでっかいサイズ（スマホで迫力大） */
+  max-width: 360px; /* パソコンで開きすぎない上限 */
+  height: 100vh;
+  background: #121212; /* 高級感のあるダークグレー */
+  border-left: 1px solid rgba(255, 204, 0, 0.3);
+  z-index: 999;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1); /* スッと滑らかに出るアニメーション */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* --- 三点リーダーが押された（チェックが入った）ときの動き --- */
+.menu-toggle:checked ~ .drawer-menu {
+  right: 0; /* 画面右端にスライドイン！ */
+}
+
+.menu-toggle:checked ~ .menu-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- ドロワー内部のレイアウト --- */
+/* --- ドロワー内のナビゲーションリスト --- */
+.drawer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  flex-grow: 1;
+}
+
+/* --- 縦並び ＆ 横線区切りのメニュー --- */
+.drawer-nav {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 1.5rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important; /* ★強制的に「上から下へ」縦一列に並べる */
+  flex-grow: 1;
+}
+
+/* 各項目の横線区切り */
+.drawer-nav li {
+  width: 100% !important; /* 横幅いっぱいに広げる */
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; /* 項目同士を区切る横線 */
+  display: block !important;
+}
+
+/* 一番上の項目の上にも横線を入れる */
+.drawer-nav li:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* リンクボタンの見た目 */
+.drawer-nav li a {
+  display: block !important; /* ブロック化して縦に積み重ねる */
+  width: 100% !important;
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding: 1rem 0.5rem !important; /* 上下に押しやすい余白 */
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+/* タップ・ホバー時の変化 */
+.drawer-nav li a:hover {
+  color: #ffcc00 !important; /* ネオンイエロー */
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 0.8rem !important; /* 少し右にずれて分かりやすく */
+}
+
+/* --- ヘッダーバーの固定（追従）設定 --- */
+.site-header-bar {
+  position: fixed !important; /* 画面に固定 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 他の要素より手前に表示 */
+  
+  /* 背景色とすりガラス風のエフェクト（必要に応じて調整） */
+  background-color: rgba(18, 18, 18, 0.9) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+
+
+/* --- お知らせリストのデザイン --- */
 .news-list {
   list-style: none;
   padding: 0;
@@ -41,76 +208,12 @@
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 100vh; /* 画面いっぱいの高さ */
+  height: 70vh; /* 画面高さの70% */
   overflow: hidden;
   margin-bottom: 2rem;
-  /* 文字を光らせる（Pico CSSのデフォルトを少し調整） */
-  --pico-h1-color: #ffcc00;
-  --pico-text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
 }
 
-.slider-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0; /* 最初は透明 */
-  animation: fadeAnimation 15s infinite; /* アニメーション設定 */
-}
-
-/* 画像ごとのアニメーション開始タイミングをずらす */
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 5s; }
-.slide:nth-child(3) { animation-delay: 10s; }
-
-/* フェードイン・フェードアウトのアニメーション */
-@keyframes fadeAnimation {
-  0%   { opacity: 0; }
-  10%  { opacity: 1; } /* 10%の時点で完全に表示 */
-  33%  { opacity: 1; } /* 33%まで表示を維持 */
-  43%  { opacity: 0; } /* 43%で完全に消える */
-  100% { opacity: 0; }
-}
-
-/* ヘッダー内の文字（全画面画像の上に重ねる） */
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* 中央寄せ */
-  text-align: center;
-  z-index: 10; /* 画像より上に配置 */
-  width: 90%;
-}
-
-.hero-content h1 {
-  font-size: 4rem; /* 文字を大きく */
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 2.5rem; } /* スマホでは少し小さく */
-}
-
-
-/* --- ヒーローエリアの調整 --- */
-.hero-slider {
-  position: relative;
-  width: 100%;
-  height: 70vh; /* 少し高さを抑えてスッキリさせる */
-  overflow: hidden;
-}
-
-/* ★超重要：写真の上に暗いフィルターをかぶせて文字を引き立たせる */
+/* 写真の上に暗いフィルターをかぶせて文字を引き立たせる */
 .hero-slider::after {
   content: '';
   position: absolute;
@@ -122,27 +225,69 @@
   z-index: 2;
 }
 
-/* 文字エリアの洗練 */
+.slider-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* 最初は透明 */
+  animation: fadeAnimation 16s infinite; /* 16秒周期 */
+}
+
+/* 4枚の画像それぞれのアニメーション開始タイミング（4秒ずつズラす） */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+.slide:nth-child(4) { animation-delay: 12s; }
+
+/* 4枚対応のフェードイン・フェードアウト */
+@keyframes fadeAnimation {
+  0%   { opacity: 0; }
+  6%   { opacity: 1; } /* ふわっと表示 */
+  25%  { opacity: 1; } /* 表示キープ */
+  31%  { opacity: 0; } /* ふわっと消える */
+  100% { opacity: 0; }
+}
+
+/* ヘッダー内の文字（画像＋フィルターの上に重ねる） */
 .hero-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3; /* フィルターより上に表示 */
+  transform: translate(-50%, -50%); /* 中央寄せ */
   text-align: center;
+  z-index: 3; /* フィルターより上 */
   width: 90%;
 }
 
 .hero-content h1 {
   font-size: 3rem;
-  letter-spacing: 0.15em; /* 文字の間隔を少し広げると高級感が出る */
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  letter-spacing: 0.15em;
+  color: #ffcc00; /* ネオン風の黄色 */
+  text-shadow: 0 0 12px rgba(255, 204, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.9);
   margin-bottom: 1rem;
 }
 
 .hero-content p {
   font-size: 1.1rem;
   letter-spacing: 0.1em;
-  color: #ddd;
+  color: #eee;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem; /* スマホ向けサイズ調整 */
+  }
 }

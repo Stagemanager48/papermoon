@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お知らせ | スナック ペーパームーン</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダーバー -->
+  <nav class="site-header-bar">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
+      <label for="menu-toggle" class="menu-overlay"></label>
+
+      <div class="drawer-menu">
+        <div class="drawer-header">
+          <span class="drawer-title">MENU</span>
+          <label for="menu-toggle" class="close-btn">✕</label>
+        </div>
+        
+        <ul class="drawer-nav">
+          <li><a href="index.html">🏠 ホーム</a></li>
+          <li><a href="concept.html">🔰 初めての方へ</a></li>
+          <li><a href="faq.html">❓ よくある質問・お支払い</a></li>
+          <li><a href="access.html">🗺️ アクセス・店舗情報</a></li>
+          <li><a href="news.html">📢 お知らせ</a></li>
+        </ul>
+
+        <div class="drawer-footer">
+          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+            📞 今からいける？（電話）
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- お知らせ メインコンテンツ -->
+  <main class="container" style="padding-top: 90px; padding-bottom: 3rem;">
+    <h1 style="color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);">お知らせ</h1>
+    <p>営業日の変更や、季節のイベント情報をお届けします。</p>
+
+    <hr style="margin-bottom: 2rem; opacity: 0.2;">
+
+    <!-- JSONから一覧がここに自動挿入されます -->
+    <div id="news-container">
+      <p>お知らせを読み込み中...</p>
+    </div>
+
+    <!-- 電話・ホーム戻るボタン -->
+    <div style="margin-top: 3rem; text-align: center;">
+      <a href="tel:0312345678" role="button" style="width: 100%; margin-bottom: 1rem;">
+        📞 今からいける？（電話する）
+      </a>
+      <a href="index.html" class="secondary" style="text-decoration: none;">← ホームに戻る</a>
+    </div>
+  </main>
+
+  <footer class="container" style="text-align: center; margin-top: 2rem;">
+    <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
+  </footer>
+
+ <!-- 読み込み部分を書き換え -->
+<script src="news.js"></script>
+<script>
+  const container = document.getElementById('news-container');
+  container.innerHTML = '';
+
+  newsData.forEach(item => {
+    const isEvent = item.tag === 'イベント' || item.tag === 'お知らせ';
+    const tagBg = isEvent ? '#ffcc00' : '#e0e0e0';
+
+    const article = document.createElement('article');
+    article.style.cssText = 'background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;';
+    
+    article.innerHTML = `
+      <div style="display: flex; gap: 0.8rem; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap;">
+        <small style="color: #aaa; font-weight: bold;">${item.date}</small>
+        <span style="background: ${tagBg}; color: #000; font-size: 0.75rem; font-weight: bold; padding: 0.2rem 0.6rem; border-radius: 4px;">${item.tag}</span>
+      </div>
+      <h2 style="font-size: 1.3rem; margin-bottom: 0.8rem; color: #fff;">${item.title}</h2>
+      <p style="color: #ddd; margin-bottom: 0;">${item.body}</p>
+    `;
+    container.appendChild(article);
+  });
+</script>
+
+</body>
+</html>

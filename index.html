@@ -12,13 +12,53 @@
 </head>
 <body>
 
+  <!-- 一直線のヘッダーバー -->
+  <nav class="site-header-bar">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      
+      <!-- 右側の三点リーダー（仕掛け用チェックボックス） -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
+
+      <!-- 背景の黒いオーバーレイ（メニュー外を押して閉じる用） -->
+      <label for="menu-toggle" class="menu-overlay"></label>
+
+      <!-- 画面右からでっかく出てくるメニュー本体 -->
+      <div class="drawer-menu">
+        <div class="drawer-header">
+          <span class="drawer-title">MENU</span>
+          <!-- 閉じるボタン -->
+          <label for="menu-toggle" class="close-btn">✕</label>
+        </div>
+        
+        <ul class="drawer-nav">
+          <li><a href="index.html">🏠 ホーム</a></li>
+          <li><a href="concept.html">🔰 初めての方へ</a></li>
+          <li><a href="faq.html">❓ よくある質問・お支払い</a></li>
+          <li><a href="access.html">🗺️ アクセス・店舗情報</a></li>
+          <li><a href="news.html">📢 お知らせ</a></li>
+        </ul>
+
+        <!-- 下部の電話ボタン -->
+        <div class="drawer-footer">
+          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+            📞 今からいける？（電話）
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <!-- メインのヘッダー（スライドショー演出） -->
   <header class="hero-slider">
     <div class="slider-wrapper">
       <div class="slide" style="background-image: url('images/snack1.jpg');"></div>
-      <div class="slide" style="background-image: url('images/snack2.jpg');"></div>      <div class="slide" style="background-image: url('images/979b501173.jpg');"></div>
-      <div class="slide" style="background-image: url('images/snack3.jpg');"></div>    <div class="hero-content container">
+      <div class="slide" style="background-image: url('images/snack2.jpg');"></div>
+      <div class="slide" style="background-image: url('images/979b501173.jpg');"></div>
+      <div class="slide" style="background-image: url('images/snack3.jpg');"></div>
     </div>
+    
     <div class="hero-content container">
       <h1>スナック ペーパームーン</h1>
       <p>〜 昭和レトロな夜を、ママと共に。 〜</p>
@@ -29,7 +69,7 @@
     <!-- ママ紹介 -->
     <section>
       <h2>ママ紹介</h2>
-      <img src="images/mama.jpg" alt="ママの写真" style="border-radius: 8px;">
+      <img src="images/mama.jpg" alt="ママの写真" style="border-radius: 8px; max-width: 100%; height: auto;">
       <p>「いらっしゃい！初めての方もお気軽にどうぞ。」</p>
     </section>
 
@@ -48,26 +88,35 @@
       </article>
     </section>
 
-    <!-- お知らせセクション -->
-    <section class="news-section">
-      <h2>お知らせ</h2>
-      <ul class="news-list">
-        <li>
-          <span class="date">2026.08.01</span>
-          <span class="category">営業案内</span>
-          <a href="#">お盆期間中の営業日について</a>
-        </li>
-        <li>
-          <span class="date">2026.07.20</span>
-          <span class="category">イベント</span>
-          <a href="#">ママの誕生日イベント開催決定！</a>
-        </li>
-      </ul>
-      
-      <div style="text-align: right; margin-top: 1rem;">
-        <a href="news.html" class="more-link">お知らせ一覧を見る ＞</a>
-      </div>
-    </section>
+
+
+
+<!-- トップページのお知らせ表示エリア -->
+    <h2>お知らせ</h2>
+<div id="top-news-container"></div>
+
+<!-- news.js を読み込む -->
+<script src="news.js"></script>
+<script>
+  // news.js で定義した newsData を直接使う
+  const container = document.getElementById('top-news-container');
+  const top3 = newsData.slice(0, 3);
+  
+  let html = '<ul style="list-style: none; padding: 0;">';
+  top3.forEach(item => {
+    html += `
+      <li style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.8rem 0;">
+        <small style="color: #ffcc00; margin-right: 0.5rem;">${item.date}</small>
+        <span style="font-weight: bold;">[${item.tag}]</span> ${item.title}
+      </li>
+    `;
+  });
+  html += '</ul>';
+  container.innerHTML = html;
+</script>
+<br>
+
+
 
     <!-- 店舗情報 ＆ 電話ボタン -->
     <section>
