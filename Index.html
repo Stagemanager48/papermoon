@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スナック ペーパームーン</title>
+
+  <!-- Pico CSS の読み込み -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <!-- 自作のスタイルシート -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- メインのヘッダー（スライドショー演出） -->
+  <header class="hero-slider">
+    <div class="slider-wrapper">
+      <div class="slide" style="background-image: url('images/snack1.jpg');"></div>
+      <div class="slide" style="background-image: url('images/snack2.jpg');"></div>      <div class="slide" style="background-image: url('images/979b501173.jpg');"></div>
+      <div class="slide" style="background-image: url('images/snack3.jpg');"></div>    <div class="hero-content container">
+    </div>
+    <div class="hero-content container">
+      <h1>スナック ペーパームーン</h1>
+      <p>〜 昭和レトロな夜を、ママと共に。 〜</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ママ紹介 -->
+    <section>
+      <h2>ママ紹介</h2>
+      <img src="images/mama.jpg" alt="ママの写真" style="border-radius: 8px;">
+      <p>「いらっしゃい！初めての方もお気軽にどうぞ。」</p>
+    </section>
+
+    <!-- 料金システム -->
+    <section>
+      <h2>システム・料金</h2>
+      <article>
+        <header>
+          <h3 style="margin: 0;">1時間 3,000円（税込）</h3>
+        </header>
+        <p><strong>歌い放題 ＆ 飲み放題！</strong></p>
+        <hr>
+        <small style="color: #888;">
+          ※カラオケは皆様で楽しく歌っていただくため、順番回しでお願いしております 🎤
+        </small>
+      </article>
+    </section>
+
+    <!-- お知らせセクション -->
+    <section class="news-section">
+      <h2>お知らせ</h2>
+      <ul class="news-list">
+        <li>
+          <span class="date">2026.08.01</span>
+          <span class="category">営業案内</span>
+          <a href="#">お盆期間中の営業日について</a>
+        </li>
+        <li>
+          <span class="date">2026.07.20</span>
+          <span class="category">イベント</span>
+          <a href="#">ママの誕生日イベント開催決定！</a>
+        </li>
+      </ul>
+      
+      <div style="text-align: right; margin-top: 1rem;">
+        <a href="news.html" class="more-link">お知らせ一覧を見る ＞</a>
+      </div>
+    </section>
+
+    <!-- 店舗情報 ＆ 電話ボタン -->
+    <section>
+      <h2>店舗情報</h2>
+      <p><strong>住所：</strong>〒130-0001 東京都墨田区吾妻橋 ２丁目３−９</p>
+      <p><strong>営業時間：</strong>19:00 〜 24:00（定休日：日・月曜）</p>
+      
+      <!-- スマホから一発で電話できるボタン -->
+      <a href="tel:0312345678" role="button" style="width: 100%; text-align: center;">
+        📞 今からいける？（電話をかける）
+      </a>
+    </section>
+  </main>
+
+  <footer class="container" style="text-align: center; margin-top: 3rem;">
+    <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
+  </footer>
+
+</body>
+</html>
