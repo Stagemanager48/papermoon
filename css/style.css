@@ -291,3 +291,11 @@ nav.site-header-bar {
     font-size: 2.2rem; /* スマホ向けサイズ調整 */
   }
 }
+
+/* --- サイト全体の背景色と文字色を一括指定 --- */
+html, body {
+  background-color: #121212 !important; /* 暗いグレー（ドロワーメニューと同じ色） */
+  color: #ffffff !important;            /* 全体の文字色を白に */
+  margin: 0;
+  padding: 0;
+}
