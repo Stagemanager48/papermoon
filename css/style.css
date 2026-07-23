@@ -292,8 +292,3 @@ nav.site-header-bar {
   }
 }
 
-/* --- サイト全体の背景色を強制上書き（CSSの一番最後に貼る） --- */
-:root, html, body {
-  background-color: #121212 !important;
-  color: #ffffff !important;
-}
