@@ -292,31 +292,13 @@ nav.site-header-bar {
   }
 }
 
+/* --- Pico.cssのダークモード設定を強制適用 --- */
+:root {
+  color-scheme: dark !important;
+}
 
-
-/* --- 文字色と背景色の強制オーバーライド（CSSの一番最後に貼り付ける） --- */
-:root, html, body {
+/* サイト全体の基本背景と文字色 */
+html, body {
   background-color: #121212 !important;
-  color: #ffffff !important;
-
-  /* Pico.css 内の文字色用変数をダーク仕様に上書き */
-  --pico-color: #ffffff !important;
-  --pico-text-color: #ffffff !important;
-  --pico-h1-color: #ffcc00 !important;
-  --pico-h2-color: #ffffff !important;
-  --pico-h3-color: #ffffff !important;
-}
-
-/* 全体要素の文字色を強制指定 */
-body, main, section, article, div, p, span, h1, h2, h3, h4, h5, h6, li, dt, dd {
-  color: #ffffff !important;
-}
-
-/* リンク文字が見づらくなるのを防止 */
-a {
-  color: #ffcc00 !important; /* 目立つネオンイエロー */
-}
-
-a:hover {
   color: #ffffff !important;
 }
