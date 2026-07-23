@@ -297,8 +297,3 @@ nav.site-header-bar {
   color-scheme: dark !important;
 }
 
-/* サイト全体の基本背景と文字色 */
-html, body {
-  background-color: #121212 !important;
-  color: #ffffff !important;
-}
