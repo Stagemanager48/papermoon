@@ -1,14 +1,52 @@
-/* --- 一直線のヘッダーバー --- */
-nav.site-header-bar {
-  position: absolute;
+/* ==========================================================================
+   スナック ペーパームーン - 完全版スタイルシート（バブルレトロVer.）
+   ========================================================================== */
+
+/* --- Google Fontsからバブル風レトロフォントを読み込み --- */
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@700;900&display=swap');
+
+/* --- 全体・カラー＆フォント変数定義 --- */
+:root {
+  color-scheme: dark !important;
+  --bg-dark: #0d0814;            /* 夜のバブル街を思わせるディープパープルブラック */
+  --card-bg: #181024;            /* カード背景 */
+  --accent-gold: #ffd700;       /* ギラッとしたバブルゴールド */
+  --neon-pink: #ff007f;         /* 鮮やかなバブルピンク */
+  --neon-cyan: #00f0ff;         /* バブルブルー */
+  --text-color: #f5f0ff;
+  
+  /* フォント定義 */
+  --font-bubble-title: 'Dela Gothic One', sans-serif;
+  --font-bubble-body: 'Zen Maru Gothic', sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-bubble-body) !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  padding: 0;
+}
+
+/* 見出し類はすべて極太バブルフォント */
+h1, h2, h3, .brand-logo, .hero-title, .drawer-title {
+  font-family: var(--font-bubble-title) !important;
+  letter-spacing: 0.1em;
+}
+
+/* --- 固定ヘッダーバー --- */
+.site-header-bar {
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(15, 15, 15, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 100;
+  background: rgba(13, 8, 20, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--accent-gold);
+  z-index: 1000;
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -26,194 +64,121 @@ nav.site-header-bar {
 }
 
 .site-header-bar .brand-logo {
-  color: #fff;
+  color: var(--accent-gold);
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 0px #000, 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
-/* --- 三点リーダー ＆ チェックボックスの仕掛け --- */
-.menu-toggle {
-  display: none; /* チェックボックス本体は隠す */
+.menu-toggle { 
+  display: none; 
 }
 
 .menu-btn {
-  color: #ffcc00;
+  color: var(--accent-gold);
   font-size: 2rem;
-  line-height: 1;
   cursor: pointer;
   padding: 0.2rem 0.5rem;
   user-select: none;
+  text-shadow: 0 0 8px var(--neon-pink);
 }
 
-/* --- 開いた時の背景黒透過オーバーレイ --- */
+/* --- ドロワーメニュー --- */
 .menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
-  z-index: 998;
+  z-index: 1001;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
 }
 
-/* --- 画面右から出る大きなドロワーメニュー --- */
 .drawer-menu {
   position: fixed;
   top: 0;
-  right: -80%; /* 最初は画面の右外に隠しておく */
-  width: 75%;  /* 画面幅の75%を覆うでっかいサイズ（スマホで迫力大） */
-  max-width: 360px; /* パソコンで開きすぎない上限 */
+  right: -85%;
+  width: 80%;
+  max-width: 340px;
   height: 100vh;
-  background: #121212; /* 高級感のあるダークグレー */
-  border-left: 1px solid rgba(255, 204, 0, 0.3);
-  z-index: 999;
+  background: #140d1f;
+  border-left: 3px solid var(--neon-pink);
+  z-index: 1002;
   padding: 2rem 1.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.9);
+}
+
+.menu-toggle:checked ~ .drawer-menu { right: 0; }
+.menu-toggle:checked ~ .menu-overlay { opacity: 1; visibility: visible; }
+
+.drawer-header {
+  display: flex;
   justify-content: space-between;
-  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1); /* スッと滑らかに出るアニメーション */
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+  align-items: center;
+  border-bottom: 2px solid var(--accent-gold);
+  padding-bottom: 1rem;
 }
 
-/* --- 三点リーダーが押された（チェックが入った）ときの動き --- */
-.menu-toggle:checked ~ .drawer-menu {
-  right: 0; /* 画面右端にスライドイン！ */
+.drawer-title {
+  color: var(--accent-gold);
+  font-size: 1.3rem;
+  text-shadow: 2px 2px 0px var(--neon-pink);
 }
 
-.menu-toggle:checked ~ .menu-overlay {
-  opacity: 1;
-  visibility: visible;
+.close-btn {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-/* --- ドロワー内部のレイアウト --- */
-/* --- ドロワー内のナビゲーションリスト --- */
-.drawer-nav {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-  flex-grow: 1;
-}
-
-/* --- 縦並び ＆ 横線区切りのメニュー --- */
 .drawer-nav {
   list-style: none !important;
   padding: 0 !important;
   margin: 1.5rem 0 !important;
   display: flex !important;
-  flex-direction: column !important; /* ★強制的に「上から下へ」縦一列に並べる */
+  flex-direction: column !important;
   flex-grow: 1;
 }
 
-/* 各項目の横線区切り */
 .drawer-nav li {
-  width: 100% !important; /* 横幅いっぱいに広げる */
+  width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important; /* 項目同士を区切る横線 */
-  display: block !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* 一番上の項目の上にも横線を入れる */
-.drawer-nav li:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-/* リンクボタンの見た目 */
 .drawer-nav li a {
-  display: block !important; /* ブロック化して縦に積み重ねる */
-  width: 100% !important;
-  color: #ffffff !important;
-  font-size: 1.1rem;
+  display: block !important;
+  color: #fff !important;
+  font-size: 1.05rem;
   text-decoration: none;
-  padding: 1rem 0.5rem !important; /* 上下に押しやすい余白 */
-  box-sizing: border-box;
+  padding: 1rem 0.5rem !important;
   transition: all 0.2s ease;
 }
 
-/* タップ・ホバー時の変化 */
 .drawer-nav li a:hover {
-  color: #ffcc00 !important; /* ネオンイエロー */
-  background: rgba(255, 255, 255, 0.05);
-  padding-left: 0.8rem !important; /* 少し右にずれて分かりやすく */
+  color: var(--accent-gold) !important;
+  background: rgba(255, 0, 127, 0.15);
+  padding-left: 1rem !important;
 }
 
-/* --- ヘッダーバーの固定（追従）設定 --- */
-.site-header-bar {
-  position: fixed !important; /* 画面に固定 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* 他の要素より手前に表示 */
-  
-  /* 背景色とすりガラス風のエフェクト（必要に応じて調整） */
-  background-color: rgba(18, 18, 18, 0.9) !important;
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
-
-
-
-
-
-
-/* --- お知らせリストのデザイン --- */
-.news-list {
-  list-style: none;
-  padding: 0;
-}
-
-.news-list li {
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-  padding: 0.8rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  align-items: center;
-}
-
-.news-list .date {
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
-
-.news-list .category {
-  background: var(--pico-primary);
-  color: #fff;
-  font-size: 0.75rem;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-}
-
-.news-list a {
-  color: var(--pico-text-color);
-  text-decoration: none;
-}
-
-.news-list a:hover {
-  color: #ffcc00;
-  text-decoration: underline;
-}
-
-
-/* --- ヒーローイメージ（全画面スライドショー） --- */
+/* --- ヒーローエリア（バブルスライドショー） --- */
 .hero-slider {
   position: relative;
   width: 100%;
-  height: 70vh; /* 画面高さの70% */
+  height: 75vh;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-/* 写真の上に暗いフィルターをかぶせて文字を引き立たせる */
 .hero-slider::after {
   content: '';
   position: absolute;
@@ -221,7 +186,7 @@ nav.site-header-bar {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.55); /* 55%の黒フィルター */
+  background: linear-gradient(180deg, rgba(13,8,20,0.3) 0%, rgba(13,8,20,0.9) 100%);
   z-index: 2;
 }
 
@@ -229,71 +194,230 @@ nav.site-header-bar {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
 }
 
 .slide {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0; /* 最初は透明 */
-  animation: fadeAnimation 16s infinite; /* 16秒周期 */
+  opacity: 0;
+  animation: fadeAnimation 16s infinite;
 }
 
-/* 4枚の画像それぞれのアニメーション開始タイミング（4秒ずつズラす） */
 .slide:nth-child(1) { animation-delay: 0s; }
 .slide:nth-child(2) { animation-delay: 4s; }
 .slide:nth-child(3) { animation-delay: 8s; }
 .slide:nth-child(4) { animation-delay: 12s; }
 
-/* 4枚対応のフェードイン・フェードアウト */
 @keyframes fadeAnimation {
-  0%   { opacity: 0; }
-  6%   { opacity: 1; } /* ふわっと表示 */
-  25%  { opacity: 1; } /* 表示キープ */
-  31%  { opacity: 0; } /* ふわっと消える */
+  0% { opacity: 0; transform: scale(1); }
+  6% { opacity: 1; }
+  25% { opacity: 1; transform: scale(1.08); }
+  31% { opacity: 0; transform: scale(1.08); }
   100% { opacity: 0; }
 }
 
-/* ヘッダー内の文字（画像＋フィルターの上に重ねる） */
 .hero-content {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%); /* 中央寄せ */
+  transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 3; /* フィルターより上 */
+  z-index: 3;
   width: 90%;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
-  letter-spacing: 0.15em;
-  color: #ffcc00; /* ネオン風の黄色 */
-  text-shadow: 0 0 12px rgba(255, 204, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.9);
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
+.hero-sub {
   font-size: 1.1rem;
-  letter-spacing: 0.1em;
-  color: #eee;
-  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  color: var(--accent-gold);
+  margin-bottom: 0.8rem;
+  text-shadow: 2px 2px 0px #000;
 }
 
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.2rem; /* スマホ向けサイズ調整 */
+/* 80'sアーバンネオン風タイトル */
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.25;
+  color: #fff700;
+  text-shadow: 
+    3px 3px 0px var(--neon-pink),
+    -3px -3px 0px var(--neon-cyan),
+    0 0 15px rgba(255, 0, 127, 0.8);
+  transform: rotate(-2deg);
+}
+
+/* --- セクション・カードデザイン --- */
+.section-card {
+  background: var(--card-bg);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 0, 127, 0.05);
+}
+
+.section-title {
+  font-size: 1.6rem;
+  color: var(--accent-gold);
+  border-bottom: 2px solid var(--neon-pink);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 0px #000, 3px 3px 0px rgba(255, 0, 127, 0.5);
+  position: relative;
+}
+
+/* --- ママ紹介 --- */
+.mama-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .mama-grid {
+    grid-template-columns: 200px 1fr;
+    align-items: center;
   }
 }
 
-/* --- Pico.cssのダークモード設定を強制適用 --- */
-:root {
-  color-scheme: dark !important;
+.mama-img-wrap {
+  text-align: center;
 }
 
+.mama-img {
+  border-radius: 12px;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 0 15px var(--neon-pink);
+  max-width: 100%;
+  height: auto;
+}
+
+.mama-speech {
+  border-left: 4px solid var(--neon-pink);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  font-style: normal;
+  font-size: 1.15rem;
+  color: #fff;
+  text-shadow: 1px 1px 0px #000;
+}
+
+/* --- 料金システム --- */
+.price-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px dashed var(--accent-gold);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.price-main {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-main span {
+  font-size: 2.5rem;
+  font-family: var(--font-bubble-title);
+  color: #fff;
+  text-shadow: 3px 3px 0px var(--neon-pink);
+}
+
+.price-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff007f 0%, #ff0033 100%);
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
+  margin-bottom: 1rem;
+}
+
+.price-note {
+  color: #bbb;
+  font-size: 0.85rem;
+}
+
+/* --- お知らせ表示 --- */
+.custom-news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-news-list li {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.news-date {
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.news-tag {
+  background: var(--neon-pink);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.news-item-title {
+  color: #eee;
+}
+
+/* --- 電話ボタン（全ページ＆ドロワー共通・一括バブルゴールド適用） --- */
+a[href^="tel:"],
+.drawer-tel-btn,
+.cta-tel-btn {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%) !important;
+  color: #111111 !important;
+  font-family: var(--font-bubble-title) !important;
+  font-size: 1.15rem !important;
+  padding: 1.1rem !important;
+  border: 2px solid #fff !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.5), 0 0 10px rgba(255, 0, 127, 0.4) !important;
+  text-shadow: none !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  margin-top: 1rem;
+}
+
+a[href^="tel:"]:hover,
+.drawer-tel-btn:hover,
+.cta-tel-btn:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.8), 0 0 15px var(--neon-pink) !important;
+  color: #000000 !important;
+}
+
+/* --- フッター --- */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: #888;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- レスポンシブ調整 --- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+}

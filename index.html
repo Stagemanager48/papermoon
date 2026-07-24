@@ -1,12 +1,18 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="ja" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>スナック ペーパームーン</title>
 
-  <!-- Pico CSS の読み込み -->
+  <!-- Pico CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  
+  <!-- レトロで情緒あるGoogle Fonts（しっぽり明朝）の読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+
   <!-- 自作のスタイルシート -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,20 +21,16 @@
   <!-- 一直線のヘッダーバー -->
   <nav class="site-header-bar">
     <div class="header-inner">
-      <a href="index.html" class="brand-logo">スナック ペーパームーン</a>
+      <a href="index.html" class="brand-logo">ペーパームーン</a>
       
-      <!-- 右側の三点リーダー（仕掛け用チェックボックス） -->
       <input type="checkbox" id="menu-toggle" class="menu-toggle">
       <label for="menu-toggle" class="menu-btn" aria-label="メニューを開く">⋮</label>
-
-      <!-- 背景の黒いオーバーレイ（メニュー外を押して閉じる用） -->
       <label for="menu-toggle" class="menu-overlay"></label>
 
-      <!-- 画面右からでっかく出てくるメニュー本体 -->
+      <!-- ドロワーメニュー -->
       <div class="drawer-menu">
         <div class="drawer-header">
           <span class="drawer-title">MENU</span>
-          <!-- 閉じるボタン -->
           <label for="menu-toggle" class="close-btn">✕</label>
         </div>
         
@@ -40,9 +42,8 @@
           <li><a href="news.html">📢 お知らせ</a></li>
         </ul>
 
-        <!-- 下部の電話ボタン -->
         <div class="drawer-footer">
-          <a href="tel:0312345678" role="button" class="drawer-tel-btn">
+          <a href="tel:0312345678" role="button" class="cta-tel-btn">
             📞 今からいける？（電話）
           </a>
         </div>
@@ -50,7 +51,7 @@
     </div>
   </nav>
 
-  <!-- メインのヘッダー（スライドショー演出） -->
+  <!-- ヒーローエリア -->
   <header class="hero-slider">
     <div class="slider-wrapper">
       <div class="slide" style="background-image: url('images/snack1.jpg');"></div>
@@ -60,80 +61,85 @@
     </div>
     
     <div class="hero-content container">
-      <h1>スナック ペーパームーン</h1>
-      <p>〜 昭和レトロな夜を、ママと共に。 〜</p>
+      <p class="hero-sub">〜 昭和レトロな夜を、ママと共に 〜</p>
+      <h1 class="hero-title">スナック<br>ペーパームーン</h1>
     </div>
   </header>
 
   <main class="container">
     <!-- ママ紹介 -->
-    <section>
-      <h2>ママ紹介</h2>
-      <img src="images/mama.jpg" alt="ママの写真" style="border-radius: 8px; max-width: 100%; height: auto;">
-      <p>「いらっしゃい！初めての方もお気軽にどうぞ。」</p>
+    <section class="section-card mama-section">
+      <h2 class="section-title">ママ紹介</h2>
+      <div class="mama-grid">
+        <div class="mama-img-wrap">
+          <img src="images/mama.jpg" alt="ママの写真" class="mama-img">
+        </div>
+        <div class="mama-text">
+          <blockquote class="mama-speech">
+            「いらっしゃい！<br>初めての方もお気軽にどうぞ。」
+          </blockquote>
+          <p>扉を開ければ、そこは少し懐かしくて温かい空間。美味しいお酒とお喋りで、今日の疲れを癒していってくださいね。</p>
+        </div>
+      </div>
     </section>
 
     <!-- 料金システム -->
-    <section>
-      <h2>システム・料金</h2>
-      <article>
+    <section class="section-card">
+      <h2 class="section-title">システム・料金</h2>
+      <article class="price-box">
         <header>
-          <h3 style="margin: 0;">1時間 3,000円（税込）</h3>
+          <p class="price-main">1時間 <span>3,000</span> 円 <small>（税込）</small></p>
         </header>
-        <p><strong>歌い放題 ＆ 飲み放題！</strong></p>
+        <p class="price-badge">歌い放題 ＆ 飲み放題！</p>
         <hr>
-        <small style="color: #888;">
+        <small class="price-note">
           ※カラオケは皆様で楽しく歌っていただくため、順番回しでお願いしております 🎤
         </small>
       </article>
     </section>
 
-
-
-
-<!-- トップページのお知らせ表示エリア -->
-    <h2>お知らせ</h2>
-<div id="top-news-container"></div>
-
-<!-- news.js を読み込む -->
-<script src="news.js"></script>
-<script>
-  // news.js で定義した newsData を直接使う
-  const container = document.getElementById('top-news-container');
-  const top3 = newsData.slice(0, 3);
-  
-  let html = '<ul style="list-style: none; padding: 0;">';
-  top3.forEach(item => {
-    html += `
-      <li style="border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.8rem 0;">
-        <small style="color: #ffcc00; margin-right: 0.5rem;">${item.date}</small>
-        <span style="font-weight: bold;">[${item.tag}]</span> ${item.title}
-      </li>
-    `;
-  });
-  html += '</ul>';
-  container.innerHTML = html;
-</script>
-<br>
-
-
+    <!-- トップページのお知らせ表示エリア -->
+    <section class="section-card">
+      <h2 class="section-title">お知らせ</h2>
+      <div id="top-news-container"></div>
+    </section>
 
     <!-- 店舗情報 ＆ 電話ボタン -->
-    <section>
-      <h2>店舗情報</h2>
-      <p><strong>住所：</strong>〒130-0001 東京都墨田区吾妻橋 ２丁目３−９</p>
-      <p><strong>営業時間：</strong>19:00 〜 24:00（定休日：日・月曜）</p>
+    <section class="section-card">
+      <h2 class="section-title">店舗情報</h2>
+      <div class="info-list">
+        <p><strong>住所：</strong>〒130-0001 東京都墨田区吾妻橋 ２丁目３−９</p>
+        <p><strong>営業時間：</strong>19:00 〜 24:00（定休日：日・月曜）</p>
+      </div>
       
-      <!-- スマホから一発で電話できるボタン -->
-      <a href="tel:0312345678" role="button" style="width: 100%; text-align: center;">
+      <a href="tel:0312345678" role="button" class="cta-tel-btn">
         📞 今からいける？（電話をかける）
       </a>
     </section>
   </main>
 
-  <footer class="container" style="text-align: center; margin-top: 3rem;">
+  <footer>
     <small>&copy; スナック ペーパームーン All Rights Reserved.</small>
   </footer>
 
+  <script src="news.js"></script>
+  <script>
+    const container = document.getElementById('top-news-container');
+    if (typeof newsData !== 'undefined') {
+      const top3 = newsData.slice(0, 3);
+      let html = '<ul class="custom-news-list">';
+      top3.forEach(item => {
+        html += `
+          <li>
+            <span class="news-date">${item.date}</span>
+            <span class="news-tag">${item.tag}</span>
+            <span class="news-item-title">${item.title}</span>
+          </li>
+        `;
+      });
+      html += '</ul>';
+      container.innerHTML = html;
+    }
+  </script>
 </body>
 </html>
